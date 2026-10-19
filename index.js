@@ -2,14 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const env = require('dotenv');
 const mongoose = require('mongoose');
-const Movie = require('./models/movie.model');
+
+const routes = require('./Routes/movie.routes');
 
 env.config();
 const app = express(); //express app object
 
-//configure body parser
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+routes(app); 
 
 app.get('/home', (req, res) => {
     return res.json({
@@ -25,5 +28,4 @@ app.listen(process.env.PORT, async () => {
     } catch(err) {
         console.log("unable to connect");
     }
-    
 });

@@ -1,10 +1,10 @@
-const mongoose = require('mogoose');
+const mongoose = require('mongoose');
 
 //define the schema of the movie resource to be stored in the db
 
 const movieSchema = new mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         required: true
     },
     description: {
