@@ -5,7 +5,7 @@ const errorResponseBody = {
     success: false
 };
 
-const sucessResponseBody = {
+const successResponseBody = {
     err: {},
     data: {},
     message:"sucessfully processed the request",
@@ -14,5 +14,5 @@ const sucessResponseBody = {
 
 module.exports = {
     errorResponseBody,
-    sucessResponseBody
+    successResponseBody
 }
