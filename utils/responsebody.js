@@ -1,4 +1,4 @@
-const responseBody = {
+const errorResponseBody = {
     err: {},
     data: {},
     message:"something went wrong",
@@ -13,6 +13,6 @@ const sucessResponseBody = {
 }
 
 module.exports = {
-    responseBody,
+    errorResponseBody,
     sucessResponseBody
 }
