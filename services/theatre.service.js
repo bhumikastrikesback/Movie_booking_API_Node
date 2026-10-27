@@ -44,8 +44,25 @@ const getAllTheatres = async () => {
         throw error;
     }
 }
+
+const deleteTheatre = async(id) => {
+    try {
+        const response = await Theatre.findByIdAndDelete(id);
+        if(!response) {
+            return {
+                err: "no record of theatre",
+                code: 404
+            }
+        }
+        return response;
+    } catch(error) {
+        console.log(error);
+        throw error;
+    }
+}
 module.exports = {
     createTheatre,
     getTheatre,
-    getAllTheatres
+    getAllTheatres,
+    deleteTheatre
 }
