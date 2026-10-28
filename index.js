@@ -15,11 +15,6 @@ app.use(bodyParser.json());
 movieRoutes(app); 
 theatreRoutes(app); //invoking theatres routes
 
-app.get('/home', (req, res) => {
-    return res.json({
-        success: true
-    })
-})
 
 app.listen(process.env.PORT, async () => {
     console.log(`server started on port ${process.env.PORT}`);

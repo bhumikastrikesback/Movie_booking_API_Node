@@ -1,5 +1,10 @@
 const Movie = require('../models/movie.model');
 
+/*
+    param data => object containing details of the new movie to be created
+    returns => return the new movie object created
+*/
+
 const createMovie = async(data) => {
     try {
         const movie = await Movie.create(data);
@@ -17,11 +22,28 @@ const createMovie = async(data) => {
     }
 }
 
+/*
+    params id => id wich will be used to identify the movie to be deleted
+    returns => the object containing the details of the movie deleted
+*/ 
 const deleteMovie = async(id) => {
-    const response = await Movie.findByIdAndDelete(id);
-    return response;
+    try {
+        const response = await Movie.findByIdAndDelete(id);
+        if(!response) {
+            return {
+                err: "No movie record found for the id provided",
+                code: 404
+            }
+        }
+        return response;
+    } catch(error) {
+        console.log(error);
+        throw error;
+    }
+    
 }
-
+// param id => id which will be used to identify the movie to be fetched
+// return => object containing movie fetched
 const getMovieById = async(id) => {
     const movie = await Movie.findById(id);
     if(!movie) {
@@ -33,6 +55,11 @@ const getMovieById = async(id) => {
 
     return movie;
 }
+/*
+    param id => id which will be used to identify the movie to be updated
+    data => object that contains actual data which is to be update
+    return => returns the new updated movie details 
+*/ 
 
 const updateMovie = async(id, data) => {
     try {
@@ -51,6 +78,11 @@ const updateMovie = async(id, data) => {
     }
     
 }
+
+/*
+    filter => filter will help us in filtering out data based on the conditional
+    returns => returns an object containing all the movies fetched based on the filter
+*/ 
 
 const fetchMovies = async(filter) => {
     let query = {};
